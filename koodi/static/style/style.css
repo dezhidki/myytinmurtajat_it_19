@@ -1,6 +1,62 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
 .code-bg {
     z-index: 1;
     position: absolute;
     width: 100vw;
     height: 100vh;
+    background-color: black;
+}
+
+div.koodi-view {
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+form.koodi-form {
+    background-color: rgba(10, 10, 10, 0.8);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+form.koodi-form h1 {
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+form.koodi-form input#koodi-code {
+    /*We use px to ensure alignment of the background*/
+    font-size: 80px;
+    width: 292px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASQAAAADCAYAAAA6J3LWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNWRHWFIAAABLSURBVEhL7c8xCgAwCENRj+7NrZmq4B6FFB5FcPhaPk+BPyLsGvVzqZ/rej/UG9owLW+nfi71c13vh3pDG6bl7dTPpX6u6/3wbzB/rD6n7FWwRSgAAAAASUVORK5CYII=');
+    background-repeat: repeat-y;
+    background-size: contain;
+}
+
+form.koodi-form input#koodi-send {
+    margin-top: 1rem;
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: rgb(6, 156, 6);
+    border: 1px solid rgb(5, 156, 42);
+    border-radius: 3px;
+    padding: 0.5rem;
+}
+
+form.koodi-form input#koodi-send:hover {
+    color: rgb(9, 119, 9);
+    border: 1px solid rgb(2, 114, 30);
+    background-color: rgba(37, 37, 37, 0.9);
 }

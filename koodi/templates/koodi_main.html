@@ -8,5 +8,13 @@
 
 {%block content%}
 
-<canvas id="bg-effect" width="100" height="100" class="code-bg" />
+<canvas id="bg-effect" width="100" height="100" class="code-bg"></canvas>
+
+<div class="koodi-view">
+    <form class="koodi-form">
+        <h1>Syötä koodi</h1>
+        <input id="koodi-code" name="koodi_code" type="text" maxlength="6" minlength="6" required />
+        <input id="koodi-send" type="submit" value="Vahvista" />
+    </form>
+</div>
 {%endblock%}
