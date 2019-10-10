@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import time
 
 
@@ -6,4 +6,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return f"Hello, world! Now is {time.clock()}"
+    return render_template("koodi_main.html")
