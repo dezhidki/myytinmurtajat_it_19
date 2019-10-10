@@ -17,7 +17,7 @@ function matrix(timeStamp) {
     ctx.fillStyle = "#0001";
     ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
-    ctx.fillStyle = "#0f0";
+    ctx.fillStyle = "#060";
     ctx.font = "15pt monospace";
 
     for (let i = 0; i < cols.length; i++) {
