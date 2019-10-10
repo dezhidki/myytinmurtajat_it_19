@@ -18,6 +18,7 @@ div.koodi-view {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
 }
@@ -29,6 +30,7 @@ form.koodi-form {
     align-items: center;
     flex-direction: column;
     border-radius: 5px;
+    margin-bottom: 0.5rem;
 }
 
 form.koodi-form h1 {
@@ -59,4 +61,9 @@ form.koodi-form input#koodi-send:hover {
     color: rgb(9, 119, 9);
     border: 1px solid rgb(2, 114, 30);
     background-color: rgba(37, 37, 37, 0.9);
+}
+
+div.koodi-first-code {
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
 }
