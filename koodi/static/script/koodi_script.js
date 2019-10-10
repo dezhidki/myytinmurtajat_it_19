@@ -5,8 +5,6 @@ let cols = null;
 const fps = 20;
 const waitMs = 1000 / fps;
 let start = null;
-
-const HEIGHT_LIMIT = 10000;
 function matrix(timeStamp) {
     if (start && timeStamp - start < waitMs) {
         window.requestAnimationFrame(matrix);
@@ -24,7 +22,7 @@ function matrix(timeStamp) {
         const y = cols[i];
 
         ctx.fillText(String.fromCharCode(Math.random() * 128), i * 20, y);
-        cols[i] = y > 100 + Math.random() * HEIGHT_LIMIT ? 0 : y + 20;
+        cols[i] = y > 100 + Math.random() * window.outerHeight * 10 ? 0 : y + 20;
     }
 
     window.requestAnimationFrame(matrix);
