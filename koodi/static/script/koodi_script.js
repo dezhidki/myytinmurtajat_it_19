@@ -1,3 +1,4 @@
+//#region Matrix Background effect
 let matrixCanvas = null;
 let ctx = null;
 let cols = null;
@@ -53,6 +54,17 @@ window.onresize = e => {
     }
 };
 
+//#endregion
+
+function initCodeForm() {
+    let form = document.getElementById("koodi-form");
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+    });
+}
+
 window.onload = () => {
     startBgEffect();
+    initCodeForm();
 };
