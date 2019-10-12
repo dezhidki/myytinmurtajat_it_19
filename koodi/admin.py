@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, request, Response, session
-from app_state import current_password
+from flask import Blueprint, render_template, request, Response, session, redirect, url_for
+import app_state
 from flask_basicauth import BasicAuth
 import functools
 import os
@@ -38,10 +38,11 @@ def check_auth(view):
 @admin.route("/")
 @check_auth
 def index():
-    return render_template("admin.html", current_password=current_password)
+    return render_template("admin.html", current_password=app_state.current_password)
 
 
 @admin.route("/update_pass", methods=["POST"])
 @check_auth
 def update_pass():
-    return None
+    app_state.current_password = request.form["new_pass"].upper()
+    return redirect(url_for("admin.index"))
