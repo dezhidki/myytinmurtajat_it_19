@@ -22,7 +22,7 @@ function matrix(timeStamp) {
     for (let i = 0; i < cols.length; i++) {
         const y = cols[i];
 
-        ctx.fillText(String.fromCharCode(Math.random() * 128), i * 20, y);
+        ctx.fillText(String.fromCharCode(Math.random() * 1024), i * 20, y);
         cols[i] = y > 100 + Math.random() * window.outerHeight * 10 ? 0 : y + 20;
     }
 
