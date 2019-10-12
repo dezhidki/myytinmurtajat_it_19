@@ -56,11 +56,36 @@ window.onresize = e => {
 
 //#endregion
 
+let form = null;
+let codeInput = null;
+let sendButton = null;
+let wrongText = null;
+
+async function checkSolution() {
+    let solution = await fetch(`/verify/${codeInput.value.toUpperCase()}`);
+
+    let result = await solution.json();
+    codeInput.disabled = false;
+    sendButton.disabled = false;
+
+    if(result.success)
+        window.location.replace(result.redirect);
+    else
+        wrongText.style.display = "block";
+}
+
 function initCodeForm() {
-    let form = document.getElementById("koodi-form");
+    form = document.getElementById("koodi-form");
+    codeInput = document.getElementById("koodi-code");
+    sendButton = document.getElementById("koodi-send");
+    wrongText = document.getElementById("koodi-wrong-text");
 
     form.addEventListener("submit", e => {
         e.preventDefault();
+        wrongText.style.display = "none";
+        codeInput.disabled = true;
+        sendButton.disabled = true;
+        checkSolution();
     });
 }
 

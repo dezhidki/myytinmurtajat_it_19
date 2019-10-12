@@ -10,7 +10,7 @@ load_dotenv(find_dotenv())
 app = Flask(__name__)
 app.secret_key = os.getenv("SESSION_KEY").encode()
 
-current_password = "TEST2"
+current_password = "ISMO86"
 
 
 def text_to_bits(text, encoding='utf-8', errors='surrogatepass'):
