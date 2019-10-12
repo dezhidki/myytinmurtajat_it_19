@@ -38,11 +38,17 @@ def check_auth(view):
 @admin.route("/")
 @check_auth
 def index():
-    return render_template("admin.html", current_password=app_state.current_password)
+    return render_template("admin.html", current_password=app_state.current_password, current_win_url=app_state.current_win_url)
 
 
 @admin.route("/update_pass", methods=["POST"])
 @check_auth
 def update_pass():
     app_state.current_password = request.form["new_pass"].upper()
+    return redirect(url_for("admin.index"))
+
+@admin.route("/update_url", methods=["POST"])
+@check_auth
+def update_url():
+    app_state.current_win_url = request.form["new_url"]
     return redirect(url_for("admin.index"))

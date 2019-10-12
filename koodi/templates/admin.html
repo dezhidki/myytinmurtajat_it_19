@@ -16,5 +16,13 @@
         <input id="new-pass" type="text" name="new_pass" minlength="6" maxlength="6" required />
         <input type="submit" value="Päivitä" />
     </form>
+
+    <h2>Voittolinkki</h2>
+    <form method="POST" action="{{ url_for('admin.update_url') }}">
+        <p>Nykyinen linkki: <a href="{{ current_win_url }}">{{ current_win_url }}</a></p>
+        <label for="new-url">Uusi linkki:</label>
+        <input id="new-url" type="text" name="new_url" required />
+        <input type="submit" value="Päivitä" />
+    </form>
 </div>
 {%endblock%}
