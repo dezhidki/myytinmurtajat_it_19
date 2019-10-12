@@ -1,14 +1,13 @@
-from admin import admin
-import app_state
-from flask import Flask, render_template, jsonify, redirect, url_for, session, request
-import time
-import binascii
-import os
-import functools
-
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
+from admin import admin
+import functools
+import os
+import binascii
+import time
+from flask import Flask, render_template, jsonify, redirect, url_for, session, request
+import app_state
 
 app = Flask(__name__)
 app.register_blueprint(admin)
