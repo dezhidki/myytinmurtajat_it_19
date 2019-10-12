@@ -1,0 +1,20 @@
+{%extends "base.html"%}
+
+{%block title%}Admin{%endblock%}
+
+{%block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/admin.css') }}" />
+{%endblock%}
+
+{%block content%}
+<div class="main-view">
+    <h1>Admin</h1>
+    <h2>Salasana</h2>
+    <form action="{{ url_for('admin.update_pass') }}">
+        <p>Nykyinen salasana: <code>{{ current_password }}</code></p>
+        <label for="new-pass">Uusi salasana:</label>
+        <input id="new-pass" type="text" name="new_pass" minlength="6" maxlength="6" required />
+        <input type="submit" value="Päivitä" />
+    </form>
+</div>
+{%endblock%}

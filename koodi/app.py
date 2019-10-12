@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, redirect, url_for, session
+from flask import Flask, render_template, jsonify, redirect, url_for, session, request
 import time
 import binascii
 import os
@@ -7,11 +7,13 @@ import functools
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
+from app_state import current_password
+from admin import admin
+
 app = Flask(__name__)
+app.register_blueprint(admin)
+
 app.secret_key = os.getenv("SESSION_KEY").encode()
-
-current_password = "ISMO86"
-
 
 def text_to_bits(text, encoding='utf-8', errors='surrogatepass'):
     bits = bin(int(binascii.hexlify(text.encode(encoding, errors)), 16))[2:]
@@ -56,7 +58,6 @@ def check_solution(code):
         "success": True,
         "redirect": url_for(session["redirect_location"])
     })
-
 
 @app.route("/")
 def index():
