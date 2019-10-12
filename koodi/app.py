@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import time
 import binascii
 
@@ -12,6 +12,19 @@ def text_to_bits(text, encoding='utf-8', errors='surrogatepass'):
 
 def group_bits(text):
     return " ".join(text[i:i + 4] for i in range(0, len(text), 4))
+
+
+def solution():
+    return "Solution"
+
+@app.route("/api/verify/<string:code>")
+def check_solution(code):
+    if code != current_password:
+        return jsonify({
+            "success": false,
+            "redirect": None
+        })    
+
 
 @app.route("/")
 def index():
