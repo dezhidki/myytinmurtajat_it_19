@@ -3,6 +3,10 @@
     margin-bottom: 1.5rem;
 }
 
+.no-answer {
+    cursor: not-allowed;
+}
+
 @media (min-width: 1216px) {
 
     .thumbnail {
