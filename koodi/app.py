@@ -1,5 +1,5 @@
 from admin import admin
-from app_state import current_password
+import app_state
 from flask import Flask, render_template, jsonify, redirect, url_for, session, request
 import time
 import binascii
@@ -28,7 +28,7 @@ def verify_solution(view):
     @functools.wraps(view)
     def decorator(**kwargs):
         if "password" in session:
-            if session["password"] != current_password:
+            if session["password"] != app_state.current_password:
                 session.clear()
                 return redirect(url_for("index"))
         else:
@@ -40,12 +40,12 @@ def verify_solution(view):
 @app.route("/victory")
 @verify_solution
 def solution():
-    return "Solution"
+    return render_template("win.html", win_url=app_state.current_win_url)
 
 
 @app.route("/verify/<string:code>", methods=["GET"])
 def check_solution(code):
-    if code != current_password:
+    if code != app_state.current_password:
         session.clear()
         return jsonify({
             "success": False,
@@ -63,10 +63,10 @@ def check_solution(code):
 @app.route("/")
 def index():
     if "password" in session:
-        if session["password"] == current_password:
+        if session["password"] == app_state.current_password:
             return redirect(url_for(session["redirect_location"]))
         else:
             session.clear()
-    first_letter = group_bits(text_to_bits(current_password[0]))
-    second_letter = group_bits(text_to_bits(current_password[1]))
+    first_letter = group_bits(text_to_bits(app_state.current_password[0]))
+    second_letter = group_bits(text_to_bits(app_state.current_password[1]))
     return render_template("koodi_main.html", first_letter=first_letter, second_letter=second_letter)

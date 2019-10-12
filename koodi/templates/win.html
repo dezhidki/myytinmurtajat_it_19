@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+
+{%block title%}Horses eat carrots{%endblock%}
+
+{%block head%}
+{%endblock%}
+
+{%block content%}
+<style>
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    svg {
+        width: 100%;
+        fill: white;
+    }
+</style>
+
+<div>
+    <svg viewBox="0 0 {{ win_url | length * 9.65 }} 18">
+        <text x="0" y="15">{{ win_url }}</text>
+    </svg>
+</div>
+{%endblock%}
