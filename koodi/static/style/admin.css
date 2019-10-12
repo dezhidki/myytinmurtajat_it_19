@@ -3,3 +3,8 @@ div.main-view {
     display: flex;
     flex-direction: column;
 }
+
+h2 {
+    margin-bottom: 0.25rem;
+    margin-top: 3rem;
+}
