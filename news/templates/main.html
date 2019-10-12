@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="fi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Faktatytön superblogi: Käynti Soihdussa</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/bulma.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}" />
 </head>
-<body>
-    wew
+
+<body class="has-navbar-fixed-top">
+    {% include "nav.html" %}
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Vierailu Soihtu-museossa!
+                </h1>
+                <h2 class="subtitle">
+                    Jyväskylän yliopiston historiaa oppimassa 🤓
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container main-text">
+            <section class="section thumbnail">
+                <img src="{{ url_for('static', filename='img/thumb.jpg') }}"/>
+                <p><em>Museossa oli myös AIVAN VALTAVA aikajana, jossa oli ihan kaikenlaisia vuosilukuja!</em></p>
+            </section>
+            <p>
+                Heippa!
+            </p>
+            <p>
+                Eilen kävin vierailulla museossa, josta löysin paljon mielenkiintoista tietoa historiaan liittyen.<br>
+                Päätinpä jakaa mielenkiintoisimmat asiat teidän kanssanne kokoamalla ne tähän blogitekstiin.                    
+            </p>
+            <p>
+                Museossa oli näytillä Uno Cygnaeuksen matkalaukku, joka on konservoitu vuonna <span class="swap-year">2013</span>. 
+                Laukku näytti todella vanhalta, mutta tyylikkäältä. 
+                Jyväskylän kasvatusopillisessa korkeakoulussa toimi talousopettajana Alli Oksanen vuosina <span class="swap-year">1919</span>-<span class="swap-year">1957</span>. 
+                Hän julkaisi useita kotitalouden oppikirjoja ja keittokirjan nimeltään Maija keittää.
+                Museosta löytyi myös tietoa Jyväskylän yliopiston informaatioteknologian tiedekunnasta. 
+                Nykymuotoinen informaatioteknologian tiedekunta perustettiin vuonna <span class="swap-year">1998</span>. 
+                Muita kiinnostavia yliopistoon liittyviä seikkoja ovat muun muassa se, että Liikunta-rakennus on rakennettu vuonna <span class="swap-year">1971</span> ja avoin yliopisto-opetus alkoi vuonna <span class="swap-year">1971</span>.
+                Opin museovierailullani myös fonetiikasta. Aarni Penttilä hankki uudenaikaisen fonetiikan tutkimusvälineistön vuonna <span class="swap-year">1936</span>. Sillä oli mahdollista muuttaa äänisignaali visuaaliseen muotoon.    
+            </p>
+            <p>
+                Tässä olivat mielenkiintoisimmat faktat, jotka löysin museovierailullani.<br>           
+            </p>
+            <p>
+                Kuulemiin!
+            </p>
+        </div>
+    </section>
 </body>
+
 </html>

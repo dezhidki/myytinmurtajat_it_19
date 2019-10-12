@@ -1,0 +1,18 @@
+.main-text > p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1216px) {
+
+    .thumbnail {
+        float: right;
+    }
+}
+
+
+@media (min-width: 769px) {
+    .main-text > p {
+        width: 40rem;
+    }
+}
