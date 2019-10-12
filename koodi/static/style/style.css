@@ -67,3 +67,11 @@ div.koodi-first-code {
   font-size: 1.5rem;
   margin-top: 0.25rem;
 }
+
+span#koodi-wrong-text {
+  color: red;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  display: none;
+}
