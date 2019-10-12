@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, Response, session, redirect, url_for
 import app_state
-from flask_basicauth import BasicAuth
 import functools
 import os
 
