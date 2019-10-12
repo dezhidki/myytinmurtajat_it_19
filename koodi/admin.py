@@ -16,6 +16,7 @@ def authenticate():
         return True
     return False
 
+
 def challenge():
     return Response(
         status=401,
@@ -46,6 +47,7 @@ def index():
 def update_pass():
     app_state.current_password = request.form["new_pass"].upper()
     return redirect(url_for("admin.index"))
+
 
 @admin.route("/update_url", methods=["POST"])
 @check_auth
