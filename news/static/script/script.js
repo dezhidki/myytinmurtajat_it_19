@@ -46,6 +46,32 @@ async function checkSolution(currentSolutions) {
     }
 }
 
+async function pollStatus(handle) {
+    let status = await fetch("/poll");
+    let skipResult = await status.json();
+    if (skipResult.skip) {
+        handle.shouldStop = true;
+        scrollToElement(document.getElementById("comments"), 1000, () => {
+            let currentComments = document.getElementById("current-comments");
+            currentComments.innerHTML = `${skipResult.renderContent}${currentComments.innerHTML}`;
+        });
+    }
+}
+
+function setIntervalAsync(callback, interval) {
+    let handle = {
+        shouldStop: false
+    };
+    let handler = () => {
+        callback(handle).finally(() => {
+            if (!handle.shouldStop)
+                setTimeout(handler, interval);
+        });
+    };
+    setTimeout(handler, interval);
+    return handle;
+}
+
 window.onload = () => {
     const swappables = document.querySelectorAll("span.swap-year");
     const swappable = new Swap(swappables, {
@@ -71,4 +97,6 @@ window.onload = () => {
         });
         checkSolution(solutions);
     });
+
+    setIntervalAsync(pollStatus, 5000);
 };

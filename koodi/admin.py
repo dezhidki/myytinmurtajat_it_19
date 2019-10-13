@@ -38,7 +38,10 @@ def check_auth(view):
 @admin.route("/")
 @check_auth
 def index():
-    return render_template("admin.html", current_password=app_state.current_password, current_win_url=app_state.current_win_url)
+    return render_template("admin.html",
+                           current_password=app_state.current_password,
+                           current_win_url=app_state.current_win_url,
+                           current_skip_year_puzzle=app_state.skip_news)
 
 
 @admin.route("/update_pass", methods=["POST"])
@@ -52,4 +55,11 @@ def update_pass():
 @check_auth
 def update_url():
     app_state.current_win_url = request.form["new_url"]
+    return redirect(url_for("admin.index"))
+
+
+@admin.route("/solve_year_puzzle", methods=["POST"])
+@check_auth
+def solve_year_puzzle():
+    app_state.skip_news = True
     return redirect(url_for("admin.index"))

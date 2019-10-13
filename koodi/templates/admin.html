@@ -24,5 +24,12 @@
         <input id="new-url" type="text" name="new_url" required />
         <input type="submit" value="Päivitä" />
     </form>
+
+    <h2>Toiminnot</h2>
+    <form method="POST" action="{{ url_for('admin.solve_year_puzzle') }}">
+        <p>Ratkaise seuraava valeuutishaaste: <strong>{{ current_skip_year_puzzle }}</strong></p>
+        <p>Huom: ratkaisu tulee noin 5 sekunnin viiveellä</p>
+        <input type="submit" value="Ratkaise valeuutishaaste" />
+    </form>
 </div>
 {%endblock%}

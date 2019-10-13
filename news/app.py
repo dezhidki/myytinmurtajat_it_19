@@ -13,6 +13,23 @@ correct_years = ["2013", "1919", "1957", "1998", "1971", "1971", "1936"]
 KOODI_ADDRESS = os.getenv("KOODI_ADDRESS")
 KOODI_VERIFICATION = os.getenv("KOODI_VERIFICATION")
 
+@app.route("/poll")
+def poll_skip():
+    skip_news_req = requests.get(
+        f"{KOODI_ADDRESS}/skip_news")
+    skip_news = skip_news_req.json()
+
+    if skip_news_req.status_code != 200 or not skip_news["skip"]:
+        return jsonify({
+            "skip": False
+        })
+
+    return jsonify({
+        "skip": True,
+        "renderContent": render_template("solution_comment.html",
+                                         solution_fifth_char=skip_news["fifth"],
+                                         solution_sixth_char=skip_news["sixth"])
+    })
 
 @app.route("/check", methods=["POST"])
 def check_solution():
