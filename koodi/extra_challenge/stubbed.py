@@ -7,5 +7,5 @@ class ExtraChallenge:
     def start(self):
         pass
 
-    def stop(self):
+    def stop(self, stop_callback):
         pass

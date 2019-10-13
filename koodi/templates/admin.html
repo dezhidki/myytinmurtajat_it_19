@@ -36,6 +36,11 @@
         <p>Pelataan lisähaaste: <strong>{{ current_enable_extra_challenge }}</strong></p>
         <input type="submit" value="Ota päälle lisähaaste" />
     </form>
+    {% if current_in_challenge %}
+    <form method="POST" action="{{ url_for('admin.stop_extra_challenge') }}">
+        <input type="submit" value="Pysäytä lisähaaste" />
+    </form>
+    {% endif %}
     {% endif %}
 </div>
 {%endblock%}

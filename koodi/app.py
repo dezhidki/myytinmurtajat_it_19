@@ -67,11 +67,27 @@ def check_news_state():
         "sixth": app_state.current_password[5]
     })
 
+def stop_challenge():
+    app_state.in_challenge = False
+
+@app.route("/poll_challenge")
+@verify_solution
+def poll_challenge():
+    if app_state.in_challenge:
+        return jsonify({
+            "inChallenge": True
+        })
+    
+    session["redirect_location"] = "solution"
+    return jsonify({
+        "inChallenge": False,
+        "redirect": url_for(session["redirect_location"])
+    })
 
 @app.route("/extra_challenge")
 @verify_solution
 def extra_challenge():
-    challenge.start()
+    challenge.start(stop_challenge)
     return "Extra challenge!"
 
 @app.route("/victory")
@@ -93,6 +109,7 @@ def check_solution(code):
     session["redirect_location"] = "solution"
 
     if challenge.enabled and app_state.play_extra_challenge:
+        app_state.in_challenge = True
         session["redirect_location"] = "extra_challenge"
 
     return jsonify({

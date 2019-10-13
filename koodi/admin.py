@@ -44,7 +44,8 @@ def index():
                            current_win_url=app_state.current_win_url,
                            current_skip_year_puzzle=app_state.skip_news,
                            enable_extra_challenge=ex_challege.enabled,
-                           current_enable_extra_challenge=app_state.play_extra_challenge)
+                           current_enable_extra_challenge=app_state.play_extra_challenge,
+                           current_in_challenge=app_state.in_challenge)
 
 
 @admin.route("/update_pass", methods=["POST"])
@@ -67,6 +68,11 @@ def solve_year_puzzle():
     app_state.skip_news = True
     return redirect(url_for("admin.index"))
 
+@admin.route("/stop_extra_challenge", methods=["POST"])
+@check_auth
+def stop_extra_challenge():
+    ex_challege.stop()
+    app_state.in_challenge = False
 
 @admin.route("/enable_extra_challenge", methods=["POST"])
 @check_auth
