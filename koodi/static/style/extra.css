@@ -1,0 +1,10 @@
+div.main-view {
+    padding: 1rem;
+    text-align: center;
+}
+
+p.code {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #00ff00;
+}

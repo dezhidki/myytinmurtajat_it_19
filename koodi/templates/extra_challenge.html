@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+
+{%block title%}Extra!!!{%endblock%}
+
+{%block head%}
+<script src="{{ url_for('static', filename='script/extra.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/extra.css') }}" />
+{%endblock%}
+
+{%block content%}
+<div class="main-view">
+    <h1>Viimeinen haaste</h1>
+    <p>
+        Huoneeseen on piilotettu pommi!
+        Löydätte pommin vierestä micro:bit-laiteen:
+    </p>
+    <img src="{{ url_for('static', filename='img/microbit.png') }}" />
+    <p>
+        Syöttäkää seuraava teksti <strong>ASCII-koodeina:</strong>
+    </p>
+    <p class="code">
+        TIETOTAIKURI
+    </p>
+    <p>
+        Painike A on 0, painike B on 1 (katso kuva).
+    </p>
+    <p>
+        Näette oikein syötettyjen merkkien lukumäärän pommin näytöllä!
+    </p>
+</div>
+{%endblock%}
