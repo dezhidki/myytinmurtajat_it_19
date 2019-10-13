@@ -1,3 +1,5 @@
+{% import "comments.html" as comments%}
+
 <!DOCTYPE html>
 <html lang="fi">
 
@@ -48,16 +50,16 @@
                 Päätinpä jakaa mielenkiintoisimmat asiat teidän kanssanne kokoamalla ne tähän blogitekstiin.
             </p>
             <p>
-                Museossa oli näytillä Uno Cygnaeuksen matkalaukku, joka on konservoitu vuonna {{ year("2013") }}.
+                Museossa oli näytillä Uno Cygnaeuksen matkalaukku, joka on konservoitu vuonna {{ year(years[0]) }}.
                 Laukku näytti todella vanhalta, mutta tyylikkäältä.
-                Jyväskylän kasvatusopillisessa korkeakoulussa toimi talousopettajana Alli Oksanen vuosina {{ year("1919") }}-{{ year("1957") }}.
+                Jyväskylän kasvatusopillisessa korkeakoulussa toimi talousopettajana Alli Oksanen vuosina {{ year(years[1]) }}-{{ year(years[2]) }}.
                 Hän julkaisi useita kotitalouden oppikirjoja ja keittokirjan nimeltään Maija keittää.
                 Museosta löytyi myös tietoa Jyväskylän yliopiston informaatioteknologian tiedekunnasta.
-                Nykymuotoinen informaatioteknologian tiedekunta perustettiin vuonna {{ year("1998") }}.
+                Nykymuotoinen informaatioteknologian tiedekunta perustettiin vuonna {{ year(years[3]) }}.
                 Muita kiinnostavia yliopistoon liittyviä seikkoja ovat muun muassa se, että Liikunta-rakennus on
-                rakennettu vuonna {{ year("1971") }} ja avoin yliopisto-opetus alkoi vuonna {{ year("1971") }}.
+                rakennettu vuonna {{ year(years[4]) }} ja avoin yliopisto-opetus alkoi vuonna {{ year(years[5]) }}.
                 Opin museovierailullani myös fonetiikasta. Aarni Penttilä hankki uudenaikaisen fonetiikan
-                tutkimusvälineistön vuonna {{ year("1936") }}. Sillä oli mahdollista muuttaa
+                tutkimusvälineistön vuonna {{ year(years[6]) }}. Sillä oli mahdollista muuttaa
                 äänisignaali visuaaliseen muotoon.
             </p>
             <p>
@@ -72,51 +74,24 @@
     <section class="section">
         <div class="container">
             <h2 id="comments" class="is-size-3">Kommentit</h2>
-
-            {% macro comment(name, hidden=False) %}
-            <article {%if hidden%} style="background-color: black; display: none;" {%endif%} class="media">
-                <figure class="media-left">
-                    <p class="image is-64x64">
-                        <img
-                            src="{%if hidden%}{{ url_for('static', filename='img/user425234_avatar.png')}}{%else%}{{ url_for('static', filename='img/anon_avatar.png') }}{%endif%}">
-                    </p>
-                </figure>
-                <div class="media-content">
-                    <div class="content">
-                        <p>
-                            <strong {%if hidden%}style="color: #00ff00" {%endif%}>{{name}}</strong>
-                            <br>
-                            {{ caller() }}
-                            <br>
-                            <small><a class="no-answer">Vastaa</a></small>
-                        </p>
-                    </div>
-                </div>
-            </article>
-            {%endmacro%}
+            <hr>
+            
             <div id="current-comments">
-                {% call comment("D4T4_W1Z", True) %}
-                <div style="color: #00ff00; font-size: 1.75rem; font-weight: bold">
-                    5. kirjain: 8<br>
-                    6. kirjain: 6<br>
-                </div>
-                {% endcall %}
-
-                {% call comment("supergrill41") %}
+                {% call comments.comment("supergrill41") %}
                 <strong>Vau!</strong> En käynyt ikinä Soihdussa ja kadun sitä nyt! Siellä on niin paljon
                 mielenkiintoista!
                 Kiitos vinkistä!
                 {% endcall %}
 
-                {% call comment("heppa_tytsi_99") %}
+                {% call comments.comment("heppa_tytsi_99") %}
                 Siellä on muuten myös pädejä aivan kaikkialla, jokaiselta löytyy joku video. 9/10
                 {% endcall %}
 
-                {% call comment("mielensa_pahoittaja") %}
+                {% call comments.comment("mielensa_pahoittaja") %}
                 kaikenlast sinäkin löydät!11! <strong>KOTONA OLEMINEN ON KYL PAREMPa</strong> 👴
                 {% endcall %}
 
-                {% call comment("cooldud3") %}
+                {% call comments.comment("cooldud3") %}
                 Vau, historiaa.<br><br>
                 Ompa kivaa<br>
                 ░░░░░░░░░<br>

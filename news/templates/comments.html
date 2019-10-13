@@ -1,0 +1,21 @@
+{% macro comment(name, hidden=False) %}
+<article {%if hidden%} style="background-color: black; display: none;" {%endif%} class="media">
+    <figure class="media-left">
+        <p class="image is-64x64">
+            <img
+                src="{%if hidden%}{{ url_for('static', filename='img/user425234_avatar.png')}}{%else%}{{ url_for('static', filename='img/anon_avatar.png') }}{%endif%}">
+        </p>
+    </figure>
+    <div class="media-content">
+        <div class="content">
+            <p>
+                <strong {%if hidden%}style="color: #00ff00" {%endif%}>{{name}}</strong>
+                <br>
+                {{ caller() }}
+                <br>
+                <small><a class="no-answer">Vastaa</a></small>
+            </p>
+        </div>
+    </div>
+</article>
+{%endmacro%}
