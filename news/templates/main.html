@@ -32,12 +32,12 @@
         </div>
     </section>
 
-    {%set curYear = 0%}
+    {%set curYear = namespace(a=0)%}
     {%set maxYear = years | length%}
     {%- macro year() -%}
-        {%- if curYear < maxYear -%}
-            <span class="swap-year"><span>{{years[curYear]}}</span></span>
-            {%- set curYear = curYear + 1 -%}
+        {%- if curYear.a < maxYear -%}
+            <span class="swap-year"><span>{{years[curYear.a]}}</span></span>
+            {%- set curYear.a = curYear.a + 1 -%}
         {%- endif -%}
     {%- endmacro -%}
 
