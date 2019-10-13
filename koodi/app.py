@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.register_blueprint(admin)
 app.secret_key = os.getenv("SESSION_KEY").encode()
 
+KOODI_VERIFICATION = os.getenv("KOODI_VERIFICATION")
 
 def text_to_bits(text, encoding='utf-8', errors='surrogatepass'):
     bits = bin(int(binascii.hexlify(text.encode(encoding, errors)), 16))[2:]
@@ -35,6 +36,33 @@ def verify_solution(view):
         return view(**kwargs)
     return decorator
 
+
+@app.route("/final_letters/<string:token>")
+def get_final_letters(token):
+    if token != KOODI_VERIFICATION:
+        return jsonify({
+            "ok" : False
+        })
+
+    return jsonify({
+        "ok": True,
+        "fifth": app_state.current_password[4],
+        "sixth": app_state.current_password[5]
+    })
+
+@app.route("/skip_news")
+def check_news_state(token):
+    if token != os.getenv("KOODI_VERIFICATION") or not app_state.skip_news:
+        return jsonify({
+            "skip" : False
+        })
+    
+    app_state.skip_news = False
+    return jsonify({
+        "skip": True,
+        "fifth": app_state.current_password[5],
+        "sixth": app_state.current_password[6]
+    })
 
 @app.route("/victory")
 @verify_solution
