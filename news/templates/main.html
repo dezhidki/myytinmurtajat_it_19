@@ -8,6 +8,9 @@
     <title>Faktatytön superblogi: Käynti Soihdussa</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/bulma.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}" />
+    <script src="{{ url_for('static', filename='script/draggable.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/swappable.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
 </head>
 
 <body class="has-navbar-fixed-top">
@@ -27,6 +30,10 @@
         </div>
     </section>
 
+    {%- macro year(val) -%}
+        <span class="swap-year"><span>{{val}}</span></span>
+    {%- endmacro -%}
+
     <section class="section">
         <div class="container main-text">
             <section class="section thumbnail">
@@ -41,19 +48,16 @@
                 Päätinpä jakaa mielenkiintoisimmat asiat teidän kanssanne kokoamalla ne tähän blogitekstiin.
             </p>
             <p>
-                Museossa oli näytillä Uno Cygnaeuksen matkalaukku, joka on konservoitu vuonna <span
-                    class="swap-year">2013</span>.
+                Museossa oli näytillä Uno Cygnaeuksen matkalaukku, joka on konservoitu vuonna {{ year("2013") }}.
                 Laukku näytti todella vanhalta, mutta tyylikkäältä.
-                Jyväskylän kasvatusopillisessa korkeakoulussa toimi talousopettajana Alli Oksanen vuosina <span
-                    class="swap-year">1919</span>-<span class="swap-year">1957</span>.
+                Jyväskylän kasvatusopillisessa korkeakoulussa toimi talousopettajana Alli Oksanen vuosina {{ year("1919") }}-{{ year("1957") }}.
                 Hän julkaisi useita kotitalouden oppikirjoja ja keittokirjan nimeltään Maija keittää.
                 Museosta löytyi myös tietoa Jyväskylän yliopiston informaatioteknologian tiedekunnasta.
-                Nykymuotoinen informaatioteknologian tiedekunta perustettiin vuonna <span class="swap-year">1998</span>.
+                Nykymuotoinen informaatioteknologian tiedekunta perustettiin vuonna {{ year("1998") }}.
                 Muita kiinnostavia yliopistoon liittyviä seikkoja ovat muun muassa se, että Liikunta-rakennus on
-                rakennettu vuonna <span class="swap-year">1971</span> ja avoin yliopisto-opetus alkoi vuonna <span
-                    class="swap-year">1971</span>.
+                rakennettu vuonna {{ year("1971") }} ja avoin yliopisto-opetus alkoi vuonna {{ year("1971") }}.
                 Opin museovierailullani myös fonetiikasta. Aarni Penttilä hankki uudenaikaisen fonetiikan
-                tutkimusvälineistön vuonna <span class="swap-year">1936</span>. Sillä oli mahdollista muuttaa
+                tutkimusvälineistön vuonna {{ year("1936") }}. Sillä oli mahdollista muuttaa
                 äänisignaali visuaaliseen muotoon.
             </p>
             <p>

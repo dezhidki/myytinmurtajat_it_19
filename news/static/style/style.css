@@ -7,6 +7,27 @@
     cursor: not-allowed;
 }
 
+span.swap-year {
+    display: inline;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+span.swap-year.swappable-place {
+    font-weight: bold;
+    background-color: rgba(0, 128, 0, 0.466);
+    border-radius: 2px;
+}
+
+span.swap-year.draggable-container--over {
+    background-color: rgba(0, 0, 255, 0.301) !important;
+}
+
+span.swap-year span.draggable-source--is-dragging {
+    opacity: 0;
+}
+
 @media (min-width: 1216px) {
 
     .thumbnail {
