@@ -31,5 +31,11 @@
         <p>Huom: ratkaisu tulee noin 5 sekunnin viiveellä</p>
         <input type="submit" value="Ratkaise valeuutishaaste" />
     </form>
+    {% if enable_extra_challenge %}
+    <form method="POST" action="{{ url_for('admin.enable_extra_challenge') }}">
+        <p>Pelataan lisähaaste: <strong>{{ current_enable_extra_challenge }}</strong></p>
+        <input type="submit" value="Ota päälle lisähaaste" />
+    </form>
+    {% endif %}
 </div>
 {%endblock%}

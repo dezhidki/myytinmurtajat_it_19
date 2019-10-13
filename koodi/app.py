@@ -8,8 +8,7 @@ import binascii
 import os
 import functools
 from admin import admin
-
-
+from extra_challenge import challenge
 
 app = Flask(__name__)
 app.register_blueprint(admin)
@@ -69,6 +68,12 @@ def check_news_state():
     })
 
 
+@app.route("/extra_challenge")
+@verify_solution
+def extra_challenge():
+    challenge.start()
+    return "Extra challenge!"
+
 @app.route("/victory")
 @verify_solution
 def solution():
@@ -86,6 +91,10 @@ def check_solution(code):
 
     session["password"] = code
     session["redirect_location"] = "solution"
+
+    if challenge.enabled and app_state.play_extra_challenge:
+        session["redirect_location"] = "extra_challenge"
+
     return jsonify({
         "success": True,
         "redirect": url_for(session["redirect_location"])

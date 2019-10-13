@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, Response, session, redire
 import app_state
 import functools
 import os
+from extra_challenge import challenge as ex_challege
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -41,7 +42,9 @@ def index():
     return render_template("admin.html",
                            current_password=app_state.current_password,
                            current_win_url=app_state.current_win_url,
-                           current_skip_year_puzzle=app_state.skip_news)
+                           current_skip_year_puzzle=app_state.skip_news,
+                           enable_extra_challenge=ex_challege.enabled,
+                           current_enable_extra_challenge=app_state.play_extra_challenge)
 
 
 @admin.route("/update_pass", methods=["POST"])
@@ -62,4 +65,11 @@ def update_url():
 @check_auth
 def solve_year_puzzle():
     app_state.skip_news = True
+    return redirect(url_for("admin.index"))
+
+
+@admin.route("/enable_extra_challenge", methods=["POST"])
+@check_auth
+def enable_extra_challenge():
+    app_state.play_extra_challenge = True
     return redirect(url_for("admin.index"))
