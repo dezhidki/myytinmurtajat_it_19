@@ -111,6 +111,7 @@ def check_solution(code):
     session["redirect_location"] = "solution"
 
     if challenge.enabled and app_state.play_extra_challenge:
+        app_state.play_extra_challenge = False
         app_state.in_challenge = True
         session["redirect_location"] = "extra_challenge"
 

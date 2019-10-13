@@ -38,6 +38,7 @@
     </form>
     {% if current_in_challenge %}
     <form method="POST" action="{{ url_for('admin.stop_extra_challenge') }}">
+        <p></p>
         <input type="submit" value="Pysäytä lisähaaste" />
     </form>
     {% endif %}

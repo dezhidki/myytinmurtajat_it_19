@@ -73,6 +73,7 @@ def solve_year_puzzle():
 def stop_extra_challenge():
     ex_challege.stop()
     app_state.in_challenge = False
+    return redirect(url_for("admin.index"))
 
 @admin.route("/enable_extra_challenge", methods=["POST"])
 @check_auth
