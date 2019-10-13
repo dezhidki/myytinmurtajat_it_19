@@ -1,3 +1,6 @@
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 import app_state
 from flask import Flask, render_template, jsonify, redirect, url_for, session, request
 import time
@@ -5,8 +8,7 @@ import binascii
 import os
 import functools
 from admin import admin
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
+
 
 
 app = Flask(__name__)
