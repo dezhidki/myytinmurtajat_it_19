@@ -87,7 +87,7 @@ def poll_challenge():
 @app.route("/extra_challenge")
 @verify_solution
 def extra_challenge():
-    if not app_state.play_extra_challenge:
+    if not app_state.in_challenge:
         return redirect(url_for("solution"))
     challenge.start(stop_challenge)
     return render_template("extra_challenge.html")
