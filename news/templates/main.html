@@ -32,8 +32,13 @@
         </div>
     </section>
 
-    {%- macro year(val) -%}
-        <span class="swap-year"><span>{{val}}</span></span>
+    {%set curYear = 0%}
+    {%set maxYear = years | length%}
+    {%- macro year() -%}
+        {%- if curYear < maxYear -%}
+            <span class="swap-year"><span>{{years[curYear]}}</span></span>
+            {%- set curYear = curYear + 1 -%}
+        {%- endif -%}
     {%- endmacro -%}
 
     <section class="section">
@@ -50,16 +55,17 @@
                 Päätinpä jakaa mielenkiintoisimmat asiat teidän kanssanne kokoamalla ne tähän blogitekstiin.
             </p>
             <p>
-                Museossa oli näytillä Uno Cygnaeuksen matkalaukku, joka on konservoitu vuonna {{ year(years[0]) }}.
+                Museossa oli näytillä Uno Cygnaeuksen matkalaukku, joka on konservoitu vuonna {{ year() }}.
                 Laukku näytti todella vanhalta, mutta tyylikkäältä.
-                Jyväskylän kasvatusopillisessa korkeakoulussa toimi talousopettajana Alli Oksanen vuosina {{ year(years[1]) }}-{{ year(years[2]) }}.
+                Jyväskylän kasvatusopillisessa korkeakoulussa toimi talousopettajana Alli Oksanen vuosina
+                {{ year() }}-{{ year() }}.
                 Hän julkaisi useita kotitalouden oppikirjoja ja keittokirjan nimeltään Maija keittää.
                 Museosta löytyi myös tietoa Jyväskylän yliopiston informaatioteknologian tiedekunnasta.
-                Nykymuotoinen informaatioteknologian tiedekunta perustettiin vuonna {{ year(years[3]) }}.
+                Nykymuotoinen informaatioteknologian tiedekunta perustettiin vuonna {{ year() }}.
                 Muita kiinnostavia yliopistoon liittyviä seikkoja ovat muun muassa se, että Liikunta-rakennus on
-                rakennettu vuonna {{ year(years[4]) }} ja avoin yliopisto-opetus alkoi vuonna {{ year(years[5]) }}.
+                rakennettu vuonna {{ year() }} ja avoin yliopisto-opetus alkoi vuonna {{ year() }}.
                 Opin museovierailullani myös fonetiikasta. Aarni Penttilä hankki uudenaikaisen fonetiikan
-                tutkimusvälineistön vuonna {{ year(years[6]) }}. Sillä oli mahdollista muuttaa
+                tutkimusvälineistön vuonna {{ year() }}. Sillä oli mahdollista muuttaa
                 äänisignaali visuaaliseen muotoon.
             </p>
             <p>
@@ -75,7 +81,7 @@
         <div class="container">
             <h2 id="comments" class="is-size-3">Kommentit</h2>
             <hr>
-            
+
             <div id="current-comments">
                 {% call comments.comment("supergrill41") %}
                 <strong>Vau!</strong> En käynyt ikinä Soihdussa ja kadun sitä nyt! Siellä on niin paljon
